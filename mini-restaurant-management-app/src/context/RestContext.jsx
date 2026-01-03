@@ -11,25 +11,23 @@ export const RestProvider = ({children}) => {
         setRests(data);
     }, [])
 
-    const saveRest = (data) => {
+    const save = (data) => {
         localStorage.setItem('evalData', JSON.stringify(data));
         setRests(data);
     }
 
     const addRest = (rest) => {
-        saveRest(prev => [{...rest, id:Date.now()}, ...prev]);
+        save(prev => [{...rest, id:Date.now()}, ...prev]);
     }
 
     const updateRest = (updated) => {
-        const updatedList = rests.map(r => 
-            r.id === updated.id ? updated : r
+        save(
+            rests.map(r =>  r.id === updated.id ? updated : r)
         );
-        saveRest(updatedList);
     }
 
     const deleteRest = (id) => {
-        const filteredRests = rests.filter(r => r.id !== id);
-        saveRest(filteredRests);
+        save(rests.filter(r => r.id !== id));
     }
     return(
         <RestContext.Provider value={{

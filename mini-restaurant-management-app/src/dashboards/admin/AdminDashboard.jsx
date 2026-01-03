@@ -5,10 +5,12 @@ import { RestContext } from '../../context/RestContext'
 
 const AdminDashboard = () => {
 
-    const {rests} = useContext(RestContext);
+    const {rests, addRest} = useContext(RestContext);
 
   return (
     <>
+        <h2>Admin Dashboard</h2>
+        
         <Sidebar />
 
         <div>

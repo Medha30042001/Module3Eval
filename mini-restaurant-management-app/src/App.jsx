@@ -23,14 +23,14 @@ function App() {
             </ProtectedRoute>
           } />
 
-          <Route path='/admin/restaurants/update' element={
-            <ProtectedRoute>
+          <Route path='/admin/restaurants/update/:id' element={
+            <ProtectedRoute role='admin'>
               <UpdateRestaurant />
             </ProtectedRoute>
           } />
 
           <Route path='/customer/dashboard' element={
-            <ProtectedRoute>
+            <ProtectedRoute role='customer'>
               <CustomerDashboard />
             </ProtectedRoute>
           } />
