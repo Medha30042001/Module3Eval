@@ -2,22 +2,28 @@ import React, { createContext, useEffect, useState } from 'react'
 
 export const RestContext = createContext();
 
-export const RestProvider = ({children}) => {
+const RestProvider = ({children}) => {
 
     const [rests, setRests] = useState([]);
 
     useEffect(() => {
-        const data = JSON.parse(localStorage.getItem('evalData')) || [];
+        const stored = localStorage.getItem('evalData');
+        const data = stored ? JSON.parse(stored) : [];
         setRests(data);
     }, [])
 
     const save = (data) => {
-        localStorage.setItem('evalData', JSON.stringify(data));
-        setRests(data);
+        setRests(
+            prev => {
+                const data = typeof dataOrFn === 'function' ? dataorFn(prev) : dataOrFn;
+                localStorage.setItem('evalData', JSON.stringify(data));
+        return data;
+            }
+        )        
     }
 
     const addRest = (rest) => {
-        save(prev => [{...rest, id:Date.now()}, ...prev]);
+        save([{...rest, id:Date.now()}, ...rests]);
     }
 
     const updateRest = (updated) => {

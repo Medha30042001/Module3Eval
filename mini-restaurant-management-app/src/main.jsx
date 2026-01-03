@@ -6,9 +6,9 @@ import RestProvider from './context/RestContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RestProvider>
+    
       <App />
-    </RestProvider>
+    
     
   </StrictMode>,
 )

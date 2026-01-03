@@ -8,11 +8,13 @@ import ProtectedRoute from './components/ProtectedRoute'
 import AdminDashboard from './dashboards/admin/AdminDashboard'
 import CustomerDashboard from './dashboards/customer/CustomerDashboard'
 import UpdateRestaurant from './dashboards/admin/UpdateRestaurant'
+import RestProvider from './context/RestContext'
 
 function App() {
 
   return (
     <>
+    <RestProvider>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login />} />
@@ -36,6 +38,8 @@ function App() {
           } />
         </Routes>
       </BrowserRouter>
+    </RestProvider>
+      
     </>
   )
 }
